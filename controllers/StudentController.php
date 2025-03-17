@@ -3,9 +3,10 @@
 require_once('app/config/database.php');
 require_once('app/models/StudentModel.php');
 require_once('app/models/NganhHocModel.php');
-
+session_start();
 class StudentController
 {
+
     private $studentModel;
     private $db;
     public function __construct()
@@ -103,14 +104,15 @@ class StudentController
     public function showCourses()
     {
         $result = $this->studentModel->getAllCourses();
-        include 'app//views/student/course_list.php';
+        include 'app/views/student/course_list.php';
     }
 
     // Xử lý đăng ký học phần
     public function registerCourse($MaHP)
     {
         if (!isset($_SESSION['MaSV'])) {
-            header("Location: app/login.php");
+            header("Location: /webdangkyhocphan/auth/login");
+            // echo $_SESSION['MaSV'];
             exit();
         }
 
@@ -165,6 +167,9 @@ class StudentController
         }
     }
 }
+
+// Instantiate the controller
+$controller = new StudentController();
 
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {

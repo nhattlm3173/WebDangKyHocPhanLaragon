@@ -8,13 +8,13 @@
         <th>Số Tín Chỉ</th>
         <th>Hành động</th>
     </tr>
-    <?php while ($row = $result->fetch_assoc()) { ?>
+    <?php foreach ($result as $course) { ?>
         <tr>
-            <td><?= htmlspecialchars($row['MaHP']) ?></td>
-            <td><?= htmlspecialchars($row['TenHP']) ?></td>
-            <td><?= htmlspecialchars($row['SoTinChi']) ?></td>
+            <td><?= htmlspecialchars($course['MaHP']) ?></td>
+            <td><?= htmlspecialchars($course['TenHP']) ?></td>
+            <td><?= htmlspecialchars($course['SoTinChi']) ?></td>
             <td>
-                <a href="app/controllers/StudentController.php?action=register&MaHP=<?= $row['MaHP'] ?>" class="btn btn-success">Đăng Ký</a>
+                <a href="app/controllers/StudentController.php?action=register&MaHP=<?= $course['MaHP'] ?>" class="btn btn-success">Đăng Ký</a>
             </td>
         </tr>
     <?php } ?>

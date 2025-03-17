@@ -32,12 +32,12 @@ class AuthController
 
             if ($student) {
                 session_start();
-                $_SESSION['student'] = $student; // Lưu vào session
+                $_SESSION['MaSV'] = $student->MaSV; // Lưu vào session
                 header("Location: /webdangkyhocphan/student/");
                 exit;
             } else {
                 $error = "Mã sinh viên không tồn tại!";
-                include 'app/views/auth/login.php';
+                include 'app/views/login.php';
             }
         }
     }
